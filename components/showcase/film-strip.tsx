@@ -87,10 +87,10 @@ export function FilmStrip({
                 <span className="strip-still">
                   <Image src={muxImage(film, { width: 640 })} alt="" fill sizes="240px" />
                   <span className="strip-duration mono">{formatDuration(film.duration)}</span>
+                  {playing && <span className="strip-badge mono">Now playing</span>}
                 </span>
                 <span className="strip-label mono">
-                  No. {String(film.number).padStart(2, '0')}
-                  {playing && <span className="strip-now"> · Now</span>}
+                  {film.category}
                 </span>
                 <span className="strip-title">{film.title}</span>
                 <span className="strip-sub">{film.subtitle}</span>

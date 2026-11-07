@@ -258,8 +258,61 @@ button {
   }
 }
 
-.site-header > .button {
+.header-actions {
   justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Phone menu: hidden on wider screens, where the centred links show instead. */
+.mobile-menu {
+  display: none;
+}
+
+.menu-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  /* The 44px target is wider than the 12px glyph; pull it out so the visible lines meet the content edge. */
+  margin-right: -16px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 4px var(--gutter) 16px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--hairline);
+  box-shadow: 0 16px 24px -16px rgb(13 12 10 / 0.18);
+}
+
+.menu-panel[hidden] {
+  display: none;
+}
+
+.menu-panel a {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.menu-panel li:last-child a {
+  border-bottom: 0;
 }
 
 /* ── Intro ── */
@@ -276,6 +329,8 @@ button {
 }
 
 .lede {
+  max-width: 46ch;
+  text-wrap: pretty;
   margin-top: 20px;
   font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
   color: var(--ink-muted);
@@ -295,6 +350,9 @@ button {
 
 .frame-player {
   display: block;
+  width: 100%;
+  /* The film's own shape on wider screens. */
+  aspect-ratio: var(--film-aspect, 16 / 9);
 }
 
 /* ── Below the picture: title, action, metadata, chapters; the film index alongside ── */
@@ -543,8 +601,19 @@ button {
   color: var(--ink-muted);
 }
 
-.strip-now {
+/* The film on screen: a yellow badge on its still. Ink text on yellow is 15.6:1; white on this yellow would be 1.25:1. */
+.strip-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 5px 7px;
+  border-radius: 4px;
+  background: var(--button);
   color: var(--ink);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .strip-title {
@@ -613,12 +682,49 @@ button {
   }
 
   .site-header {
+    position: relative;
     grid-template-columns: 1fr auto;
     min-height: 64px;
   }
 
-  /* On phones the page is one column you scroll; the header keeps the wordmark and the action. */
+  /* On phones the links move into the menu button. */
   .site-nav {
     display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .intro {
+    padding-block: 40px 28px;
+  }
+
+  .lede {
+    margin-top: 14px;
+  }
+
+  /* A very wide film would leave a sliver of a player; phones get a 16:9 frame with the film letterboxed inside, so
+     the controls have room. */
+  .frame-player {
+    aspect-ratio: 16 / 9;
+  }
+
+  .below {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 40px;
+    padding-top: 24px;
+  }
+
+  .panel-actions {
+    margin-top: 20px;
+  }
+
+  .strip {
+    margin-top: 48px;
+  }
+
+  .site-footer {
+    margin-top: 72px;
   }
 }

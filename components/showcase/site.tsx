@@ -1,5 +1,6 @@
 /** Static sections of the FRAME showcase. Server components; no player state. */
 
+import { MobileMenu } from './mobile-menu';
 import { rise, RISE } from './rise';
 
 export function Wordmark() {
@@ -29,9 +30,12 @@ export function SiteHeader() {
           </li>
         </ul>
       </nav>
-      <a href="#watch" className="button button-primary button-small">
-        Watch now
-      </a>
+      <div className="header-actions">
+        <a href="#watch" className="button button-primary button-small">
+          Watch now
+        </a>
+        <MobileMenu />
+      </div>
     </header>
   );
 }
@@ -43,7 +47,8 @@ export function Intro() {
         The Art of Watching.
       </h1>
       <p className="lede rise" style={rise(RISE.description)}>
-        A quiet, editorial skin for Video.js 10.
+        The picture takes the page; the controls wait in the margins until you reach for them. A Video.js 10 skin, set
+        like a film journal.
       </p>
     </section>
   );

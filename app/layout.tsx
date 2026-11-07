@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'FRAME — The Art of Watching',
   description:
-    'FRAME is an editorial skin for Video.js 10: a quiet, typographic video player with chapter navigation and Mux streaming.',
+    'The picture takes the page; the controls wait in the margins until you reach for them. FRAME is a Video.js 10 skin, set like a film journal.',
 };
 
 export const viewport: Viewport = {

@@ -2165,12 +2165,8 @@
         display: none;
       }
 
+      /* Too small for a cover: the title would crowd the controls. The host page names the film anyway. */
       .frame-title-card {
-        padding: 0 calc(var(--media-spacing) * 4) calc(var(--media-spacing) * 19);
-        gap: calc(var(--media-spacing) * 2);
-      }
-
-      .frame-title-card-meta {
         display: none;
       }
 

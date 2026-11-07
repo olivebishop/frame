@@ -36,7 +36,10 @@ export function FrameExperience() {
     <VideoPlayer title={`${film.title} — ${film.subtitle}`} poster={muxImage(film, { width: 1920 })}>
       <section id="watch" ref={watchRef} className="watch shell" aria-labelledby="film-title">
         <div className="mount rise" style={rise(RISE.player)}>
-          <VideoSkin className="frame-player" style={{ width: '100%', aspectRatio: film.aspect ?? '16 / 9' }}>
+          <VideoSkin
+            className="frame-player"
+            style={{ '--film-aspect': film.aspect ?? '16 / 9' } as React.CSSProperties}
+          >
             <MuxVideo
               key={film.slug}
               source={{ playbackId: film.playbackId, poster: { time: film.posterTime } }}
