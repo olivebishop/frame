@@ -6,30 +6,26 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@videojs/core": "10.3.0",
+    "@videojs/google-cast": "10.3.0",
+    "@videojs/mux-video": "10.3.0",
+    "@videojs/react": "10.3.0",
+    "cn": "^0.5.2",
     "next": "16.4.5",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.5",
-    "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "bun@1.4.2",
-  "ignoreScripts": [
-    "sharp",
-    "unrs-resolver"
-  ],
-  "trustedDependencies": [
-    "sharp",
-    "unrs-resolver"
-  ]
+  "packageManager": "pnpm@12.6.0"
 }

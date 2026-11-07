@@ -1,0 +1,97 @@
+@layer base.theme, base.preset, base.preferences;
+
+/*
+ * FRAME theme tokens. Colors, surfaces, radii, sizes, and motion live here; components read them.
+ * Public properties packaged skins expose (`--media-accent-color`, `--media-accent-text-color`,
+ * `--media-border-radius`, `--media-font-family`, `--media-scale-unit`, `--media-object-fit`) keep working.
+ */
+@layer base.preset {
+  .media-skin[data-theme="frame"] {
+    /* Ink and paper. */
+    --frame-ink: #0d0c0a;
+    --frame-surface: rgb(18 17 15 / 0.94);
+    --frame-surface-line: rgb(255 255 255 / 0.1);
+    --frame-hover: rgb(255 255 255 / 0.1);
+    --frame-pressed: rgb(255 255 255 / 0.16);
+
+    --media-background: transparent;
+    --media-foreground: rgb(255 255 255);
+    /* Inside the picture the accent is white: colour is kept for the page's buttons. */
+    --media-default-accent-color: rgb(255 255 255);
+    --media-default-accent-text-color: var(--frame-ink);
+    --media-accent: var(--media-accent-color, var(--media-default-accent-color));
+    --media-accent-foreground: var(--media-accent-text-color, var(--media-default-accent-text-color));
+    --media-primary: var(--media-accent);
+    --media-primary-foreground: var(--media-accent-foreground);
+    --media-muted: rgb(255 255 255 / 0.22);
+    --media-muted-foreground: rgb(255 255 255 / 0.72);
+    --media-popover: var(--frame-surface);
+    --media-popover-foreground: rgb(255 255 255);
+    --media-ring: var(--media-accent);
+    --media-backdrop: var(--frame-ink);
+    --media-button-highlight: var(--frame-hover);
+    --media-scrollbar-thumb-color: rgb(255 255 255 / 0.3);
+
+    /* Focus: a white ring between ink halos, legible over bright and dark frames alike. */
+    --frame-focus-ring: 0 0 0 2px var(--frame-ink), 0 0 0 4px var(--media-ring), 0 0 0 6px rgb(13 12 10 / 0.55);
+
+    /* Track. */
+    --frame-track: rgb(255 255 255 / 0.24);
+    --frame-track-buffer: rgb(255 255 255 / 0.42);
+    --frame-track-height: 3px;
+    --frame-track-height-active: 5px;
+
+    /* Shape. Squared editorial corners, never pills. */
+    --media-video-border-radius: var(--media-border-radius, 10px);
+    --media-control-radius: 6px;
+    --media-controls-radius: 6px;
+    --media-menu-item-radius: 6px;
+    --media-popup-radius: 10px;
+    --media-dialog-radius: 12px;
+
+    /* Flat surfaces: hairlines, not shadows or blur. */
+    --media-shadow-surface: none;
+    --media-shadow-surface-inset: inset 0 0 0 1px var(--frame-surface-line);
+    --media-shadow-thumb: 0 0 0 1px rgb(13 12 10 / 0.6);
+    --media-backdrop-filter-surface: none;
+    --media-backdrop-filter-indicator: none;
+    --media-backdrop-filter-dialog: none;
+
+    /* Motion. Short and decelerating for UI; the preferences sheet collapses these under reduced motion. */
+    --frame-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --media-duration-fast: 120ms;
+    --media-duration: 160ms;
+    --media-duration-slow: 200ms;
+    --media-duration-menu: 180ms;
+    --media-hidden-popup-scale: 0.97;
+    --media-hidden-popup-blur: 2px;
+    --media-popup-translate-distance: 4px;
+
+    /* Type. */
+    --frame-font: var(--media-font-family, var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif));
+    --frame-font-mono: var(--font-geist-mono, ui-monospace, "SFMono-Regular", Menlo, monospace);
+  }
+
+  @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+    .media-skin[data-theme="frame"] {
+      --frame-surface: rgb(13 12 10);
+      --frame-surface-line: rgb(255 255 255 / 0.4);
+      --frame-track: rgb(255 255 255 / 0.45);
+      --frame-track-buffer: rgb(255 255 255 / 0.65);
+    }
+  }
+
+  @media (forced-colors: active) {
+    .media-skin[data-theme="frame"] {
+      --media-background: Canvas;
+      --media-popover: Canvas;
+      --media-popover-foreground: CanvasText;
+      --media-foreground: CanvasText;
+      --media-accent: Highlight;
+      --media-primary: Highlight;
+      --media-primary-foreground: HighlightText;
+      --media-ring: Highlight;
+      --frame-focus-ring: 0 0 0 2px Highlight;
+    }
+  }
+}
