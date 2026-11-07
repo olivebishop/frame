@@ -2,7 +2,8 @@
  * The FRAME collection. One source of truth for the showcase copy, the player source, and the WebVTT chapter track
  * served from `/chapters/[slug].vtt`.
  *
- * Placeholder media: until FRAME's own Mux assets are uploaded, these entries use public Mux example playback IDs.
+ * The featured film, Tears of Steel, is hosted on FRAME's own Mux account (public playback ID), with official subtitles
+ * in five languages attached as text tracks. The other entries use public Mux example playback IDs.
  * Override the featured film with `NEXT_PUBLIC_FRAME_FEATURED_PLAYBACK_ID`.
  */
 
@@ -26,6 +27,8 @@ export interface Film {
   duration: number;
   /** Second used for the poster and collection still. */
   posterTime: number;
+  /** Picture shape as a CSS aspect-ratio, so the player matches the film instead of letterboxing it. */
+  aspect?: string;
   credit: string;
   license: string;
   licenseUrl?: string;
@@ -38,15 +41,43 @@ const featuredOverride = process.env.NEXT_PUBLIC_FRAME_FEATURED_PLAYBACK_ID;
 
 export const films: Film[] = [
   {
-    slug: 'big-buck-bunny-trailer',
+    slug: 'tears-of-steel',
     number: 1,
+    title: 'Tears of Steel',
+    subtitle: 'A short film',
+    category: 'Science fiction',
+    year: 2012,
+    description:
+      'In a future Amsterdam, a band of scientists and soldiers gathers in the Oude Kerk to restage one moment from the past: a breakup on a bridge, forty years earlier, that set destructive robots loose on the world.',
+    playbackId: featuredOverride || 'tb01rcrwWFTDVvUT8jXwZlzmynA01F2GhorBT00uyUaQOI',
+    duration: 734,
+    posterTime: 400,
+    aspect: '640 / 267',
+    credit: 'Blender Foundation, mango.blender.org',
+    license: 'CC BY 3.0',
+    licenseUrl: 'https://creativecommons.org/licenses/by/3.0/',
+    note: 'Subtitles in five languages, chapters',
+    chapters: [
+      { start: 0, title: 'The bridge' },
+      { start: 44, title: 'Forty years later' },
+      { start: 191, title: 'All systems go' },
+      { start: 292, title: 'Action' },
+      { start: 371, title: 'Abort' },
+      { start: 428, title: 'Out of time' },
+      { start: 504, title: 'Memory overwrite' },
+      { start: 588, title: 'Credits' },
+    ],
+  },
+  {
+    slug: 'big-buck-bunny-trailer',
+    number: 2,
     title: 'Big Buck Bunny',
     subtitle: 'Trailer',
     category: 'Animation',
     year: 2008,
     description:
       'One big rabbit, three rodents, and one giant payback. The trailer for the Peach open movie project, an early landmark of open-source filmmaking made entirely in Blender.',
-    playbackId: featuredOverride || 'VcmKA6aqzIzlg3MayLJDnbF55kX00mds028Z65QxvBYaA',
+    playbackId: 'VcmKA6aqzIzlg3MayLJDnbF55kX00mds028Z65QxvBYaA',
     duration: 60,
     posterTime: 27.5,
     credit: 'Blender Foundation',
@@ -63,7 +94,7 @@ export const films: Film[] = [
   },
   {
     slug: 'big-buck-bunny',
-    number: 2,
+    number: 3,
     title: 'Big Buck Bunny',
     subtitle: 'The complete film',
     category: 'Animation',
@@ -81,7 +112,7 @@ export const films: Film[] = [
   },
   {
     slug: 'rewind',
-    number: 3,
+    number: 4,
     title: 'Rewind',
     subtitle: 'A summer montage',
     category: 'Montage',

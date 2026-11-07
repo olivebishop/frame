@@ -14,9 +14,11 @@ export function ChapterList({ film }: { film: Film }) {
   const t = time?.currentTime ?? 0;
   const currentIndex = t > 0 ? film.chapters.findLastIndex((chapter) => t >= chapter.start) : -1;
 
-  async function jump(start: number) {
-    await store.seek(start);
-    if (store.state.paused) await store.play();
+  function jump(start: number) {
+    // Start playback inside the click, while it still counts as a user gesture, then seek. Seeking first can outlast
+    // the gesture on a long stream, and the browser then refuses to play.
+    store.play().catch(() => {});
+    store.seek(start).catch(() => {});
   }
 
   return (

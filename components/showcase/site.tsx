@@ -63,6 +63,10 @@ export function SiteFooter() {
           Mux
         </a>
         .{' '}
+        <a href="https://mango.blender.org" target="_blank" rel="noreferrer">
+          Tears of Steel
+        </a>{' '}
+        and{' '}
         <a href="https://peach.blender.org" target="_blank" rel="noreferrer">
           Big Buck Bunny
         </a>{' '}

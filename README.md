@@ -67,6 +67,8 @@ The skin keeps the public custom properties of the packaged Video.js skins:
 
 - [Video.js 10](https://github.com/videojs/v10), Apache-2.0.
 - Streaming and images by [Mux](https://www.mux.com).
+- _Tears of Steel_ © Blender Foundation, [mango.blender.org](https://mango.blender.org),
+  [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Hosted on FRAME's Mux account with the official subtitles.
 - _Big Buck Bunny_ © Blender Foundation, [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/),
   [peach.blender.org](https://peach.blender.org).
 - "Rewind" is the Video.js demo asset, hosted on Mux.

@@ -2179,12 +2179,6 @@
       }
     }
 
-    video::cue {
-      font-family: var(--frame-font);
-      background-color: rgb(13 12 10 / 0.8);
-      color: rgb(255 255 255);
-    }
-
     @keyframes frame-spin {
       to {
         transform: rotate(360deg);
@@ -2223,5 +2217,14 @@
     :scope.media-video {
       background-color: var(--frame-ink);
     }
+  }
+
+  /* Subtitles sit on an ink box so they stay readable over bright frames. ::cue does not match inside @scope, so this
+     rule uses a plain selector. */
+  .media-skin[data-theme="frame"] video::cue {
+    font-family: var(--frame-font);
+    line-height: 1.35;
+    background-color: rgb(13 12 10 / 0.78);
+    color: rgb(255 255 255);
   }
 }
