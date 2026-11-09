@@ -18,10 +18,9 @@ buttons.
 - **Casting.** Chromecast through the official `@videojs/google-cast` extension (Chromium browsers), and AirPlay
   in Safari. The Cast button stays disabled until a device is reachable on the network.
 
-  ## Links
-  - https://frame-one-psi.vercel.app/
-  - Hosted on Vercel
-    
+## Links
+
+- [Live site](https://frame-one-psi.vercel.app)
 
 ## Structure
 
